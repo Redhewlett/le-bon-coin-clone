@@ -1,0 +1,76 @@
+/* no flexbox */
+/* bem  */
+/* responsive */
+/* no framework */
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+/* color vars */
+:root {
+  --orange: #ff6e14;
+  --blue: #4183d7;
+  --hover-color: #1a1a1a;
+  --button-text: white;
+}
+
+/* ------ nav ------ */
+nav {
+  width: 60vw;
+  height: max-content;
+  margin: 10px auto;
+  padding: 1em 0em;
+  background-color: yellowgreen;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: 10%;
+  align-items: center;
+}
+/* left side */
+.nav__left {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+.nav__left img {
+  width: 8vw;
+  height: auto;
+}
+.rechercher,
+.addAnnounce {
+  font-size: 0.8em;
+  width: max-content;
+  font-weight: bold;
+  padding: 0.2em 1em;
+  border: none;
+}
+.addAnnounce {
+  border-radius: 5px;
+  color: var(--button-text);
+  background-color: var(--orange);
+}
+.addAnnounce:hover {
+  cursor: pointer;
+}
+.addAnnounce .fa-plus {
+  border: 2px solid var(--button-text);
+  border-radius: 4px;
+  font-size: 1.2em;
+  padding: 0.2em;
+  margin-right: 0.5em;
+}
+.fa-border {
+  padding: 5px 3px;
+}
+.rechercher {
+  background-color: transparent;
+}
+.rechercher .fa-magnifying-glass {
+  font-size: 1.4em;
+  margin-right: 0.5em;
+}
+/* right side */
+.nav__right {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+/* ------ nav end------ */
