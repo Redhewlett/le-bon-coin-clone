@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" type="text/css" href="styles.css" />
     <script src="https://kit.fontawesome.com/6c24c652e4.js" crossorigin="anonymous"></script>
-    <title>leboncoin</title>
+    <title>leboncoin, site de petites annonces gratuites</title>
   </head>
   <body>
     <!-- header -->
@@ -18,7 +18,7 @@
           <a href="#">
             <img src="./assets//logo/leboncoin_logo.svg.png" alt="lebon_coin_logo" />
           </a>
-          <button class="addAnnounce"><i class="fa-solid fa-plus"></i>Déposer une annonce</button>
+          <button class="addAnnounce"><i class="fa-solid fa-plus"></i><span>Déposer une annonce</span></button>
           <button class="rechercher"><i class="fa-solid fa-magnifying-glass"></i>Rechercher</button>
         </div>
         <!-- nav-left -->
@@ -78,22 +78,35 @@
         <div class="search_tool">
           <!--category button-->
           <div role="button" class="search_tool__button category--button">
-            <i class="fa-solid fa-list-ul"></i>
-            Catégories
+            <span class="category--button--group">
+              <i class="fa-solid fa-list-ul"></i>
+              Catégories
+            </span>
             <i class="fa-solid fa-chevron-down"></i>
           </div>
           <!--  search button-input-->
-          <div role="button" class="search_tool__button search--button">
+          <div role="button" class="search_tool__button searchObject--input">
             <i class="fa-solid fa-magnifying-glass"></i>
-            Que recherchez-vous ?
+            <input type="text" name="objet" placeholder="Que cherchez-vous?" />
           </div>
           <!-- select city/radius -->
-          <div role="button" class="search_tool__button selectCity--button">
+          <div role="button" class="search_tool__button searchCity--input">
             <i class="fa-solid fa-location-dot"></i>
-            Saisissez une ville et un rayon
+            <input type="text" name="ville" placeholder="Saisissez une ville et un rayon" />
           </div>
         </div>
       </div>
+      <span class="priceButton">Prix</span>
+      <!-- with shipping toggle -->
+      <div class="withShipping">
+        <div class="withShipping__btnContainer">
+          <span id="withShipping__btn">
+            <i class="fa-solid fa-x"></i>
+          </span>
+        </div>
+        <p>Voir également les annonces disponibles en livraison</p>
+      </div>
+      <!-- with shipping toggle -->
     </section>
     <!-- scrolling content -->
     <script type="text/javascript" src="index.js"></script>
