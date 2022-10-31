@@ -26,3 +26,38 @@ for (let i = 0; i < shippingArray.length; i++) {
   })
 }
 // ---------- toogle button ----------
+
+// ---------- caroussel ---------------
+
+const imgList = document.getElementById('imgList')
+const scrollRight = document.getElementById('scrollRight')
+const scrollLeft = document.getElementById('scrollLeft')
+const btns = [scrollRight, scrollLeft]
+let currentScroll = 0
+
+for (let i = 0; i < btns.length; i++) {
+  btns[i].addEventListener('click', (e) => {
+    scroll(e)
+  })
+}
+
+function scroll(e) {
+  const id = e.target.id
+  const max = 1200
+
+  if (currentScroll < max) {
+    if (id === 'right' || id === 'scrollRight') {
+      imgList.scrollBy(240, 0)
+      currentScroll += 240
+    } else if (id === 'left' || id === 'scrollLeft') {
+      imgList.scrollBy(-240, 0)
+      currentScroll -= 240
+    }
+  }
+  if (currentScroll >= max) {
+    imgList.scrollLeft = 0
+    currentScroll -= 1199
+  }
+
+  console.log(id, currentScroll)
+}

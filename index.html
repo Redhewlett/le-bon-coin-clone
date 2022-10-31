@@ -116,8 +116,9 @@
       <button class="addAnnounce addAnnounce--variant"><span>Déposer une annonce</span><i class="fa-solid fa-plus"></i></button>
       <div class="topCategories">
         <p>Top catégories</p>
+        <!-- caroussel -->
         <div class="topCategories__caroussel">
-          <ul>
+          <ul id="imgList">
             <li>
               <a href="#">
                 <img src="./assets/images/vetements.avif" alt="Vêtements d'occasion pour femme, homme et enfant" />
@@ -179,7 +180,11 @@
               </a>
             </li>
           </ul>
+
+          <button id="scrollLeft" onclick="scroll()"><i id="left" class="fa-solid fa-chevron-left"></i></button>
+          <button id="scrollRight" onclick="scroll()"><i id="right" class="fa-solid fa-chevron-right"></i></button>
         </div>
+        <!-- caroussel end -->
       </div>
     </section>
     <!-- scrolling content -->
