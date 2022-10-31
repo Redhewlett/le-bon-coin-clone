@@ -60,55 +60,127 @@
       <!-- subnav -->
     </header>
     <!-- header-end -->
-    <!-- scrolling content -->
-    <h1 class="mainTitle">Des millions de petites annonces et autant d’occasions de se faire plaisir</h1>
-    <section class="content">
-      <div class="content_searchTool">
-        <form>
-          <div class="form__item">
-            <input id="offres" type="radio" value="Offres" name="adType" />
-            <label for="offers">Offres</label>
-          </div>
 
-          <div class="form__item">
-            <input id="demandes" type="radio" value="Demandes" name="adType" />
-            <label for="demandes">Demandes</label>
+    <!-- scrolling content -->
+    <section class="scrolling__content">
+      <h1 class="mainTitle">Des millions de petites annonces et autant d’occasions de se faire plaisir</h1>
+      <!-- searchbox -->
+      <div class="searchBox">
+        <div class="searchTool__wrapper">
+          <form>
+            <div class="form__item">
+              <input id="offres" type="radio" value="Offres" name="adType" />
+              <label for="offers">Offres</label>
+            </div>
+
+            <div class="form__item">
+              <input id="demandes" type="radio" value="Demandes" name="adType" />
+              <label for="demandes">Demandes</label>
+            </div>
+          </form>
+          <div class="search_tool">
+            <!--category button-->
+            <div role="button" class="search_tool__button category--button">
+              <span class="category--button--group">
+                <i class="fa-solid fa-list-ul"></i>
+                Catégories
+              </span>
+              <i class="fa-solid fa-chevron-down"></i>
+            </div>
+            <!--  search button-input-->
+            <div role="button" class="search_tool__button searchObject--input">
+              <i class="fa-solid fa-magnifying-glass"></i>
+              <input type="text" name="objet" placeholder="Que cherchez-vous?" />
+            </div>
+            <!-- select city/radius -->
+            <div role="button" class="search_tool__button searchCity--input">
+              <i class="fa-solid fa-location-dot"></i>
+              <input type="text" name="ville" placeholder="Saisissez une ville et un rayon" />
+            </div>
           </div>
-        </form>
-        <div class="search_tool">
-          <!--category button-->
-          <div role="button" class="search_tool__button category--button">
-            <span class="category--button--group">
-              <i class="fa-solid fa-list-ul"></i>
-              Catégories
+        </div>
+        <span class="priceButton">Prix</span>
+        <!-- with shipping toggle -->
+        <div class="withShipping">
+          <div class="withShipping__btnContainer">
+            <span id="withShipping__btn">
+              <i class="fa-solid fa-x"></i>
             </span>
-            <i class="fa-solid fa-chevron-down"></i>
           </div>
-          <!--  search button-input-->
-          <div role="button" class="search_tool__button searchObject--input">
-            <i class="fa-solid fa-magnifying-glass"></i>
-            <input type="text" name="objet" placeholder="Que cherchez-vous?" />
-          </div>
-          <!-- select city/radius -->
-          <div role="button" class="search_tool__button searchCity--input">
-            <i class="fa-solid fa-location-dot"></i>
-            <input type="text" name="ville" placeholder="Saisissez une ville et un rayon" />
-          </div>
+          <p class="withShipping__text">Voir également les annonces disponibles en livraison</p>
+          <button class="withShipping__help">?</button>
+        </div>
+        <!-- with shipping toggle -->
+        <button class="displayResults btn--blue">Rechercher (577 383 résultats)</button>
+      </div>
+      <button class="addAnnounce addAnnounce--variant"><span>Déposer une annonce</span><i class="fa-solid fa-plus"></i></button>
+      <div class="topCategories">
+        <p>Top catégories</p>
+        <div class="topCategories__caroussel">
+          <ul>
+            <li>
+              <a href="#">
+                <img src="./assets/images/vetements.avif" alt="Vêtements d'occasion pour femme, homme et enfant" />
+                <span aria-roledescription="figcaption">Vêtements</span>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <img src="./assets/images/vacances.avif" alt="Location saisonnière pour vos vacances" />
+                <span aria-roledescription="figcaption">Vacances</span>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <img src="./assets/images/offres_emploi.avif" alt="Annonces d''emploi en CDI, CDD, en intérim" />
+                <span aria-roledescription="figcaption">Offres d'emploi</span>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <img src="./assets/images/ventes_immo.avif" alt="Ventes immobilières de maison et appartement" />
+                <span aria-roledescription="figcaption">Ventes immo</span>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <img src="./assets/images/voitures.avif" alt="Annonces auto et voiture d'occasion" />
+                <span aria-roledescription="figcaption">Voitures</span>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <img src="./assets/images/ameublement.avif" alt="Meubles d'occasion" />
+                <span aria-roledescription="figcaption">Ameublement</span>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <img src="./assets/images/electromenager.avif" alt="Petit et gros électroménager de seconde main" />
+                <span aria-roledescription="figcaption">Electroménager</span>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <img src="./assets/images/decoration.avif" alt="Objets déco d'occasion pour la maison" />
+                <span aria-roledescription="figcaption">Décoration</span>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <img src="./assets/images/informatique.avif" alt="PC et matériel informatique d'occasion" />
+                <span aria-roledescription="figcaption">Informatique</span>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <img src="./assets/images/livres.avif" alt="Livre, roman, BD occasion" />
+                <span aria-roledescription="figcaption">Livres</span>
+              </a>
+            </li>
+          </ul>
         </div>
       </div>
-      <span class="priceButton">Prix</span>
-      <!-- with shipping toggle -->
-      <div class="withShipping">
-        <div class="withShipping__btnContainer">
-          <span id="withShipping__btn">
-            <i class="fa-solid fa-x"></i>
-          </span>
-        </div>
-        <p class="withShipping__text">Voir également les annonces disponibles en livraison</p>
-        <button class="withShipping__help">?</button>
-      </div>
-      <!-- with shipping toggle -->
-      <button class="displayResults btn--blue">Rechercher (577 383 résultats)</button>
     </section>
     <!-- scrolling content -->
     <script type="text/javascript" src="index.js"></script>
