@@ -43,21 +43,27 @@ for (let i = 0; i < btns.length; i++) {
 
 function scroll(e) {
   const id = e.target.id
-  const max = 1200
+  const max = 1440
 
-  if (currentScroll < max) {
-    if (id === 'right' || id === 'scrollRight') {
+  if (currentScroll === 0 && id === 'scrollLeft') {
+    imgList.scrollLeft = max
+    currentScroll = max
+    console.log(currentScroll)
+    return
+  }
+  if (currentScroll <= max) {
+    if (id === 'scrollRight') {
       imgList.scrollBy(240, 0)
       currentScroll += 240
-    } else if (id === 'left' || id === 'scrollLeft') {
+    } else if (id === 'scrollLeft') {
       imgList.scrollBy(-240, 0)
       currentScroll -= 240
     }
+    console.log(currentScroll)
   }
-  if (currentScroll >= max) {
+  if (currentScroll >= max && id === 'scrollRight') {
     imgList.scrollLeft = 0
-    currentScroll -= 1199
+    currentScroll = 0
+    console.log('return to base', currentScroll)
   }
-
-  console.log(id, currentScroll)
 }

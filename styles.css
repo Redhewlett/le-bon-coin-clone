@@ -16,6 +16,8 @@ body {
 :root {
   --orange: #ff6e14;
   --blue: #4183d7;
+  --blue-map-bg: #3d6abe;
+  --blue-map-stroke: #1e357d;
   --black: black;
   --hover-color: #1a1a1a;
   --white: white;
@@ -37,7 +39,8 @@ nav,
 .category--button,
 .withShipping,
 .topCategories__caroussel a,
-.topCategories__carousselBtnsContainer {
+.topCategories__carousselBtnsContainer,
+.franceRegionSelector {
   display: grid;
 }
 /* header box */
@@ -413,7 +416,6 @@ nav {
 .topCategories {
   width: 55vw;
   position: relative;
-  background-color: #4183d7;
 }
 .topCategories::after {
   content: '';
@@ -450,10 +452,13 @@ nav {
   grid-template-columns: 1fr;
 }
 .topCategories__caroussel img {
-  width: 12em;
+  width: 12vw;
   height: auto;
   grid-column: 1/2;
   grid-row: 1/2;
+}
+.topCategories__caroussel a {
+  text-decoration: none;
 }
 .topCategories__caroussel a:hover {
   filter: brightness(105%);
@@ -466,24 +471,45 @@ nav {
   padding-block: 0.5em;
   align-self: end;
 }
-
 #scrollLeft,
 #scrollRight {
-  width: 3em;
+  width: 1.8em;
   aspect-ratio: 1;
   border-radius: 50%;
   border: none;
-  font-size: 1em;
+  font-size: 1.5em;
   color: var(--light-grey);
   background-color: var(--white);
   cursor: pointer;
   position: absolute;
   top: 50%;
 }
+/*the button with always be clicked but the font-awesome element will be ignored  */
+#scrollLeft i,
+#scrollRight i {
+  pointer-events: none;
+}
 #scrollLeft {
   left: 2%;
 }
 #scrollRight {
   right: 2%;
+}
+/* france region selector */
+.franceRegionSelector {
+  background-color: #8a8a8a;
+}
+.franceRegionSelector svg {
+  justify-self: center;
+}
+.land {
+  fill: var(--blue-map-bg);
+  fill-opacity: 1;
+  stroke: var(--blue-map-stroke);
+  stroke-opacity: 1;
+  stroke-width: 1;
+}
+.land:hover {
+  fill: var(--orange);
 }
 /* ------ content end ------ */
