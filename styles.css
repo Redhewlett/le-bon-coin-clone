@@ -40,7 +40,8 @@ nav,
 .withShipping,
 .topCategories__caroussel a,
 .topCategories__carousselBtnsContainer,
-.franceRegionSelector {
+.franceRegionSelector,
+.franceRegionSelector__dropDown {
   display: grid;
 }
 /* header box */
@@ -48,14 +49,15 @@ nav,
   width: 55%;
   margin-inline: auto;
   background-color: var(--white);
-  border-bottom: 1px solid var(--light-grey);
+  /* border-bottom: 1px solid var(--light-grey); */
   top: 0;
   position: sticky;
   z-index: 5;
+  box-shadow: rgb(26 26 26 / 8%) 0px -1px 4px 0px, rgb(26 26 26 / 12%) 0px 4px 8px 0px;
 }
 .mainHeader--grown {
   width: 100%;
-  padding-inline: 20%;
+  padding-inline: 22.5%;
   background-color: var(--white);
   border-bottom: 1px solid var(--light-grey);
   top: 0;
@@ -190,7 +192,6 @@ nav {
   top: 50%;
   left: -6px;
 }
-
 .categories p::after {
   content: '';
   left: 50%;
@@ -215,20 +216,22 @@ nav {
 
 /* --------- scrolling content --------- */
 .scrolling__content {
-  width: 100%;
+  width: 54.5vw;
+  margin: 0px auto;
   justify-content: center;
   align-items: center;
   gap: 2em;
-  background-color: yellowgreen;
+  background-color: var(--very-light-grey);
+  padding-bottom: 5em;
 }
 .searchBox {
-  width: 50vw;
+  width: 85%;
   justify-self: center;
   height: max-content;
   border-radius: 5px;
   background-color: var(--white);
   padding-bottom: 1em;
-  box-shadow: 0px 0px 7px 2px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 0px 7px 2px rgba(0, 0, 0, 0.1);
 }
 .mainTitle {
   width: 100%;
@@ -414,12 +417,12 @@ nav {
 }
 /* categories caroussel */
 .topCategories {
-  width: 55vw;
+  width: 52vw;
   position: relative;
 }
 .topCategories::after {
   content: '';
-  width: 50px;
+  width: 40px;
   height: 80%;
   top: 20%;
   right: 0px;
@@ -452,7 +455,7 @@ nav {
   grid-template-columns: 1fr;
 }
 .topCategories__caroussel img {
-  width: 12vw;
+  width: 10vw;
   height: auto;
   grid-column: 1/2;
   grid-row: 1/2;
@@ -497,7 +500,7 @@ nav {
 }
 /* france region selector */
 .franceRegionSelector {
-  background-color: #8a8a8a;
+  gap: 1em;
 }
 .franceRegionSelector svg {
   justify-self: center;
@@ -508,8 +511,44 @@ nav {
   stroke: var(--blue-map-stroke);
   stroke-opacity: 1;
   stroke-width: 1;
+  transition: fill 0.3s;
 }
 .land:hover {
   fill: var(--orange);
 }
+.region {
+  fill: none;
+  stroke: var(--blue-map-stroke);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-miterlimit: 10;
+}
+.franceRegionSelector__dropDown {
+  width: 30%;
+  gap: 0.2em;
+  justify-self: center;
+  position: relative;
+}
+.franceRegionSelector__dropDown select {
+  height: 3em;
+  font-size: 1em;
+  appearance: none;
+  background-image: url('./assets/images/icons/chevron-down-solid.svg');
+  background-size: 6%;
+  background-repeat: no-repeat;
+  background-position-x: 95%;
+  background-position-y: 50%;
+  border: 1px solid var(--light-grey);
+  border-radius: 5px;
+  padding-inline: 1em;
+}
+.franceRegionSelector__dropDown select:focus {
+  border-color: var(--blue);
+  outline: none;
+}
+.franceRegionSelector__dropDown select:hover {
+  cursor: pointer;
+}
+
 /* ------ content end ------ */
