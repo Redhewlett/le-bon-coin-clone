@@ -532,7 +532,7 @@ nav {
 }
 .franceRegionSelector__dropDown select {
   height: 3em;
-  font-size: 1em;
+  font-size: 0.9em;
   appearance: none;
   background-image: url('./assets/images/icons/chevron-down-solid.svg');
   background-size: 6%;
