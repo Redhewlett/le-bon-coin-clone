@@ -67,3 +67,16 @@ function scroll(e) {
     console.log('return to base', currentScroll)
   }
 }
+
+// ------ country selector -------
+const countrySelector = document.querySelector('.countrySelector')
+const select = document.querySelector('.countrySelector__initial')
+const countryList = document.getElementById('countrySelector__list')
+
+select.addEventListener('click', () => {
+  countryList.classList.toggle('hidden')
+})
+countryList.addEventListener('mouseleave', () => {
+  countryList.classList.toggle('hidden')
+})
+// ------ country selector end -------

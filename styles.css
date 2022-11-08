@@ -49,7 +49,9 @@ nav,
 .categoriesList__bottom,
 .usefullLinks,
 .appDownload,
-#countrySelector__list {
+#countrySelector__list,
+#countrySelector__list li,
+.countrySelector__initial {
   display: grid;
 }
 /* header box */
@@ -96,7 +98,8 @@ nav {
 .categoriesList ul li:hover,
 .usefullLinks ul li:not(:first-of-type, .appDownload):hover,
 .appDownload img:hover,
-#countrySelector__list li:first-of-type {
+#countrySelector__list li:first-of-type,
+.countrySelector__initial {
   cursor: pointer;
 }
 /* left side */
@@ -229,18 +232,18 @@ nav {
 
 /* --------- scrolling content --------- */
 .scrolling__content {
-  width: 54.5vw;
+  width: 55%;
+  grid-template-columns: 1fr;
   margin: 0px auto;
   justify-content: center;
   align-items: center;
   gap: 2em;
   background-color: var(--very-light-grey);
-  padding-bottom: 5em;
 }
 .searchBox {
-  width: 90%;
-  justify-self: center;
+  width: 95%;
   height: max-content;
+  justify-self: center;
   border-radius: 5px;
   background-color: var(--white);
   padding-bottom: 1em;
@@ -680,20 +683,55 @@ footer {
   height: auto;
 }
 /* custome select */
+.countrySelector {
+  position: relative;
+}
+.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
 #countrySelector__list {
   width: max-content;
+  position: absolute;
+  bottom: 0%;
+  right: 0%;
   padding-inline: 1em;
   grid-template-columns: repeat(5, 1fr);
-  gap: 0.5em 3em;
+  gap: 0.5em 1em;
   color: var(--black);
   background-color: var(--white);
   border-radius: 5px;
 }
+#countrySelector__list li {
+  padding: 0.7em 3em 0.7em 0.7em;
+  grid-template-columns: 0.5fr 2fr;
+  justify-content: center;
+  align-items: center;
+  border-radius: 3px;
+}
 #countrySelector__list li:hover {
+  background-color: var(--categories-grey);
   text-decoration: none;
 }
-#countrySelector__list img {
+#countrySelector__list img,
+.countrySelector__initial_flag {
   width: 1.6em;
   height: auto;
   margin-right: 0.5em;
+}
+.countrySelector__initial {
+  background-color: var(--white);
+  padding: 0.5em 1em;
+  border-radius: 5px;
+  grid-template-columns: 0.5fr 2fr 1fr;
+  align-items: center;
+  color: var(--black);
+  font-size: 0.9em;
+}
+.countrySelector__initial img {
+  margin-right: 0em;
+}
+.countrySelector__initial__arrow {
+  width: 0.9em;
+  justify-self: end;
 }
