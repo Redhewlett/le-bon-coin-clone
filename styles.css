@@ -55,6 +55,7 @@ nav,
 .moreFromLeBonCoin,
 .signature,
 .signature p,
+.category__box,
 .category__box__list__element {
   display: grid;
 }
@@ -315,6 +316,7 @@ nav {
 }
 .category--button i {
   font-size: large;
+  pointer-events: none;
 }
 .category--button .fa-chevron-down {
   color: var(--light-grey);
@@ -809,7 +811,7 @@ footer {
 .category__box {
   width: 96%;
   height: max-content;
-  padding: 1em;
+  grid-template-columns: 1fr 2fr;
   z-index: 4;
   position: absolute;
   top: 90%;
@@ -819,25 +821,28 @@ footer {
   background-color: var(--white);
   box-shadow: 0px 0px 7px 2px rgba(0, 0, 0, 0.1);
 }
+/* left side category list */
 .category__box__list__element {
-  width: 30%;
+  width: 100%;
   padding: 0.5em;
   grid-template-columns: 0.5fr 3fr 0.5fr;
   align-items: center;
   text-align: left;
-  gap: 0.5em;
+  gap: 0.6em;
   border-radius: 5px;
 }
 .category__box__list__element p {
   font-size: 0.9em;
 }
 .category__box__list__element i {
-  font-size: 1.2em;
+  font-size: 1em;
   color: var(--light-grey);
+  justify-self: center;
 }
 .category__box__list__element .fa-chevron-right {
   opacity: 0;
   color: var(--orange);
+  pointer-events: none;
 }
 .category__box__list__element:hover {
   color: var(--orange);
@@ -850,7 +855,14 @@ footer {
 .category__box__list__element:hover i {
   color: var(--orange);
 }
-
 .category__box:focus {
   background-color: #4183d7;
+}
+.category__box__subCategories,
+.category__box__list {
+  padding: 1em;
+}
+/* right side to display the sub categories on hover */
+.category__box__subCategories {
+  border-left: 1px solid var(--light-grey);
 }

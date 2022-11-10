@@ -84,7 +84,7 @@ countryList.addEventListener('mouseleave', () => {
 // ------ category list box ------
 const categoriesBtn = document.querySelector('.category--button')
 const refBox = document.querySelector('.search_tool')
-let isOpen = false
+let listBoxIsOpen = false
 // array of categories
 const CategoriesArray = [
   {
@@ -174,7 +174,7 @@ const CategoriesArray = [
     subCategories: ['Prestations de services', 'Billetterie', 'Évènements', 'Cours particuliers', 'Covoiturage']
   },
   {
-    title: 'Autres',
+    title: 'Divers',
     icon: '<i class="fa-solid fa-ellipsis"></i>',
     subCategories: ['Autres']
   }
@@ -198,6 +198,8 @@ const listHtml = `
     `
     ).join('')}
   </div>
+  <div class='category__box__subCategories'>
+  </div>
 <span>
 `
 
@@ -212,16 +214,16 @@ categoriesBtn.addEventListener('click', () => {
 function boxHandler(refNode, insertElement, insertedElement) {
   let categorysBtnCopy
 
-  if (!isOpen) {
+  if (!listBoxIsOpen) {
     refNode.insertAdjacentHTML('afterEnd', insertElement)
-    isOpen = true
+    listBoxIsOpen = true
     categorysBtnCopy = document.getElementById('categoryBtnCopy')
-  } else {
+  } else if (listBoxIsOpen) {
     closeBox(insertedElement)
     return
   }
   // if we click on the copycat button
-  categorysBtnCopy.addEventListener('click', () => {
+  categorysBtnCopy.addEventListener('click', (e) => {
     const listBox = document.getElementById('category__box')
     closeBox(listBox)
   })
@@ -230,5 +232,22 @@ function boxHandler(refNode, insertElement, insertedElement) {
 // closebox
 function closeBox(box) {
   box.remove()
-  isOpen = false
+  listBoxIsOpen = false
 }
+
+window.addEventListener('mouseup', (e) => {
+  // ----for the category listbox-----
+  const listBox = document.getElementById('category__box')
+  const boxRelatedArr = ['category__box__list', 'category--button', 'category__box', 'category__box__list__element']
+
+  if (listBoxIsOpen) {
+    let match = 0
+    for (let i = 0; i < boxRelatedArr.length; i++) {
+      if (e.target.parentNode.classList.value.includes(boxRelatedArr[i])) {
+        match++
+      }
+    }
+    if (match === 0) return closeBox(listBox)
+  }
+  // ----for the category listbox-----
+})
