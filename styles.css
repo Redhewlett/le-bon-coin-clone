@@ -23,6 +23,7 @@ body {
   --hover-color: #1a1a1a;
   --white: white;
   --regular-grey: #8a8a8a;
+  --darker-grey: rgb(71, 71, 71);
   --light-grey: #c2c2c2;
   --lighter-grey: #ececec;
   --categories-grey: #f3f3f3f5;
@@ -656,7 +657,7 @@ footer {
   height: max-content;
   padding-inline: 0.6em;
   padding-bottom: 0.5em;
-  background-color: var(--regular-grey);
+  background-color: var(--darker-grey);
   margin-top: -2em;
 }
 .usefullLinks,
@@ -664,6 +665,7 @@ footer {
   grid-template-columns: repeat(4, 1fr);
   gap: 0em 0.9em;
   color: var(--white);
+  padding-block: 1.5em;
 }
 .usefullLinks ul,
 .moreFromLeBonCoin {
@@ -673,6 +675,7 @@ footer {
 }
 .usefullLinks ul li:not(:first-of-type) {
   padding-bottom: 0.5em;
+  font-weight: 500;
 }
 .usefullLinks ul li,
 .moreFromLeBonCoin li {
@@ -788,7 +791,7 @@ footer {
 /* date and social */
 .signature {
   color: white;
-  padding-block: 0.5em;
+  padding: 0.5em 0 1em 0;
   grid-template-columns: repeat(2, 1fr);
   font-size: 0.8em;
   font-weight: 500;
@@ -811,7 +814,7 @@ footer {
 .category__box {
   width: 96%;
   height: max-content;
-  grid-template-columns: 1fr 2fr;
+  grid-template-columns: 1fr 1fr 1fr;
   z-index: 4;
   position: absolute;
   top: 90%;
@@ -824,7 +827,7 @@ footer {
 /* left side category list */
 .category__box__list__element {
   width: 100%;
-  padding: 0.5em;
+  padding: 0.8em 0.2em;
   grid-template-columns: 0.5fr 3fr 0.5fr;
   align-items: center;
   text-align: left;
@@ -835,7 +838,6 @@ footer {
   font-size: 0.9em;
 }
 .category__box__list__element i {
-  font-size: 1em;
   color: var(--light-grey);
   justify-self: center;
 }
@@ -843,6 +845,7 @@ footer {
   opacity: 0;
   color: var(--orange);
   pointer-events: none;
+  font-size: 1.2em;
 }
 .category__box__list__element:hover {
   color: var(--orange);
@@ -855,9 +858,6 @@ footer {
 .category__box__list__element:hover i {
   color: var(--orange);
 }
-.category__box:focus {
-  background-color: #4183d7;
-}
 .category__box__subCategories,
 .category__box__list {
   padding: 1em;
@@ -865,4 +865,25 @@ footer {
 /* right side to display the sub categories on hover */
 .category__box__subCategories {
   border-left: 1px solid var(--light-grey);
+}
+.list__element--subcategories {
+  grid-template-columns: 1fr;
+  padding-inline: 0.5em;
+  gap: 0;
+}
+.list__element--active {
+  position: relative;
+}
+.list__element--active,
+.list__element--active i {
+  color: var(--orange);
+}
+.list__element--active:before {
+  content: '';
+  width: 4px;
+  height: 100%;
+  background-color: var(--orange);
+  position: absolute;
+  top: 0;
+  left: -1em;
 }

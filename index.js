@@ -88,16 +88,19 @@ let listBoxIsOpen = false
 // array of categories
 const CategoriesArray = [
   {
+    isActive: true,
     title: 'Vacances',
     icon: '<i class="fa-solid fa-sun"></i>',
     subCategories: ['Locations & gîtes', "Chambres d'hôtes", 'Campings', 'Hébergements insolites', 'hôtels', 'Ventes privées vacances', 'Locations en Espagne']
   },
   {
+    isActive: false,
     title: 'Emploi',
     icon: '<i class="fa-solid fa-briefcase"></i>',
     subCategories: ["Offres d'emploi", "Offres d'emploi Cadres", 'Formations Professionnelles']
   },
   {
+    isActive: false,
     title: 'Véhicules',
     icon: '<i class="fa-solid fa-car-rear"></i>',
     subCategories: [
@@ -114,26 +117,31 @@ const CategoriesArray = [
     ]
   },
   {
+    isActive: false,
     title: 'Immobilier',
     icon: '<i class="fa-solid fa-house"></i>',
     subCategories: ['Ventes immobilières', 'Immobilier Neuf', 'Locations', 'Colocations', 'Bureaux & Commerces']
   },
   {
+    isActive: false,
     title: 'Mode',
     icon: '<i class="fa-solid fa-shirt"></i>',
     subCategories: ['Vêtements', 'Chaussures', 'Accessoires & Bagagerie', 'Montres & Bijoux', 'Équipement bébé', 'Vêtements bébé', 'Luxe et Tendance']
   },
   {
+    isActive: false,
     title: 'Maison',
     icon: '<i class="fa-solid fa-couch"></i>',
     subCategories: ['Ameublement', 'Électroménager', 'Arts de la table', 'Décoration', 'Linge de maison', 'Bricolage', 'Jardinage']
   },
   {
+    isActive: false,
     title: 'Multimédia',
     icon: '<i class="fa-solid fa-mobile-screen-button"></i>',
     subCategories: ['Informatique', 'Consoles & Jeux vidéo', 'Image & Son', 'Téléphonie']
   },
   {
+    isActive: false,
     title: 'Loisir',
     icon: '<i class="fa-solid fa-basketball"></i>',
     subCategories: [
@@ -149,11 +157,13 @@ const CategoriesArray = [
     ]
   },
   {
+    isActive: false,
     title: 'Animaux',
     icon: '<i class="fa-solid fa-paw"></i>',
     subCategories: ['Animaux']
   },
   {
+    isActive: false,
     title: 'Materiel Professionnel',
     icon: '<i class="fa-solid fa-dolly"></i>',
     subCategories: [
@@ -169,16 +179,19 @@ const CategoriesArray = [
     ]
   },
   {
+    isActive: false,
     title: 'Services',
     icon: '<i class="fa-solid fa-handshake-angle"></i>',
     subCategories: ['Prestations de services', 'Billetterie', 'Évènements', 'Cours particuliers', 'Covoiturage']
   },
   {
+    isActive: false,
     title: 'Divers',
     icon: '<i class="fa-solid fa-ellipsis"></i>',
     subCategories: ['Autres']
   }
 ]
+const currentCategory = CategoriesArray[0]
 //the html to inject
 const listHtml = `
 <span id='category__box' class='category__box'>
@@ -190,7 +203,7 @@ const listHtml = `
     ${CategoriesArray.map(
       (category) =>
         `
-      <div class='category__box__list__element'>
+      <div class='category__box__list__element ${category.isActive ? 'list__element--active ' : ''}'>
         ${category.icon}
         <p>${category.title}<p/>
         <i class="fa-solid fa-chevron-right"></i>
@@ -199,6 +212,19 @@ const listHtml = `
     ).join('')}
   </div>
   <div class='category__box__subCategories'>
+    <div class='category__box__list__element'>
+      ${currentCategory.icon}
+      <p>${currentCategory.title}<p/>
+    </div>
+    ${currentCategory.subCategories
+      .map(
+        (subcategory) =>
+          `<div class='category__box__list__element list__element--subcategories'>
+              <p>${subcategory}<p/>
+            </div>
+      `
+      )
+      .join('')}
   </div>
 <span>
 `
