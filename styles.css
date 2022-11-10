@@ -836,10 +836,12 @@ footer {
 }
 .category__box__list__element p {
   font-size: 0.9em;
+  pointer-events: none;
 }
 .category__box__list__element i {
   color: var(--light-grey);
   justify-self: center;
+  pointer-events: none;
 }
 .category__box__list__element .fa-chevron-right {
   opacity: 0;
@@ -867,9 +869,17 @@ footer {
   border-left: 1px solid var(--light-grey);
 }
 .list__element--subcategories {
-  grid-template-columns: 1fr;
+  grid-template-columns: 1fr 0.2fr;
+  align-items: center;
   padding-inline: 0.5em;
   gap: 0;
+}
+.list__element--subcategories i {
+  font-size: 1.5em;
+  color: var(--light-grey);
+}
+.list__element--subcategories:hover i {
+  color: var(--light-grey);
 }
 .list__element--active {
   position: relative;

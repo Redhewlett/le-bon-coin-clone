@@ -191,7 +191,7 @@ const CategoriesArray = [
     subCategories: ['Autres']
   }
 ]
-const currentCategory = CategoriesArray[0]
+let currentCategory = CategoriesArray[0]
 //the html to inject
 const listHtml = `
 <span id='category__box' class='category__box'>
@@ -203,7 +203,9 @@ const listHtml = `
     ${CategoriesArray.map(
       (category) =>
         `
-      <div class='category__box__list__element ${category.isActive ? 'list__element--active ' : ''}'>
+      <div onclick='handleListElementClick(event)' data-id="${category.title}" class='category__box__list__element ${
+          category.isActive ? 'list__element--active' : ''
+        }'>
         ${category.icon}
         <p>${category.title}<p/>
         <i class="fa-solid fa-chevron-right"></i>
@@ -277,3 +279,43 @@ window.addEventListener('mouseup', (e) => {
   }
   // ----for the category listbox-----
 })
+
+// when click on one category
+function handleListElementClick(e) {
+  // previous activ item
+  const indexPreviousCategory = CategoriesArray.indexOf(currentCategory)
+  // click item
+  const clickedCategory = e.target
+  // early return if similar
+  if (clickedCategory.innerText === currentCategory.title) return
+  // item we want to set as activ
+  const foundItem = CategoriesArray.filter((category) => category.title === clickedCategory.innerText)
+  const foundItemIndex = CategoriesArray.indexOf(foundItem[0])
+  // change the arrays
+  CategoriesArray[foundItemIndex] = { ...CategoriesArray[foundItemIndex], isActive: true }
+  CategoriesArray[indexPreviousCategory] = { ...CategoriesArray[indexPreviousCategory], isActive: false }
+  const targetDiv = document.querySelector('.category__box__subCategories')
+  currentCategory = CategoriesArray[foundItemIndex]
+  // 'refresh' the div's content
+  targetDiv.innerHTML = `
+  <div class='category__box__list__element'>
+      ${currentCategory.icon}
+      <p>${currentCategory.title}<p/>
+    </div>
+    ${currentCategory.subCategories
+      .map(
+        (subcategory) =>
+          `<div class='category__box__list__element list__element--subcategories'>
+              <p>${subcategory}<p/>
+            </div>
+      `
+      )
+      .join('')}
+  `
+  //---- add and remove the activ class  ----
+  // select prev to delete the class from it
+  const previousCategoryElement = document.querySelector('.list__element--active')
+  previousCategoryElement.classList.remove('list__element--active')
+  //add to the new one
+  clickedCategory.classList.add('list__element--active')
+}
