@@ -194,7 +194,7 @@ const CategoriesArray = [
 let currentCategory = CategoriesArray[0]
 //the html to inject
 const listHtml = `
-<span id='category__box' class='category__box'>
+<div id='category__box' class='category__box'>
   <div class='category__box__list'>
     <div id='categoryBtnCopy' class='category__box__list__element'>
         <i class="fa-solid fa-list-ul"></i>
@@ -228,7 +228,7 @@ const listHtml = `
       )
       .join('')}
   </div>
-<span>
+</div>
 `
 
 // onclick add or remove
@@ -247,38 +247,15 @@ function boxHandler(refNode, insertElement, insertedElement) {
     listBoxIsOpen = true
     categorysBtnCopy = document.getElementById('categoryBtnCopy')
   } else if (listBoxIsOpen) {
-    closeBox(insertedElement)
+    closeBox(insertedElement, listBoxIsOpen)
     return
   }
   // if we click on the copycat button
-  categorysBtnCopy.addEventListener('click', (e) => {
+  categorysBtnCopy.addEventListener('click', () => {
     const listBox = document.getElementById('category__box')
-    closeBox(listBox)
+    closeBox(listBox, listBoxIsOpen)
   })
 }
-
-// closebox
-function closeBox(box) {
-  box.remove()
-  listBoxIsOpen = false
-}
-
-window.addEventListener('mouseup', (e) => {
-  // ----for the category listbox-----
-  const listBox = document.getElementById('category__box')
-  const boxRelatedArr = ['category__box__list', 'category--button', 'category__box', 'category__box__list__element']
-
-  if (listBoxIsOpen) {
-    let match = 0
-    for (let i = 0; i < boxRelatedArr.length; i++) {
-      if (e.target.parentNode.classList.value.includes(boxRelatedArr[i])) {
-        match++
-      }
-    }
-    if (match === 0) return closeBox(listBox)
-  }
-  // ----for the category listbox-----
-})
 
 // when click on one category
 function handleListElementClick(e) {
@@ -319,3 +296,57 @@ function handleListElementClick(e) {
   //add to the new one
   clickedCategory.classList.add('list__element--active')
 }
+// ------ category list box-end------
+
+// ------ select city for research ------
+const cityInput = document.querySelector('.searchCity--input')
+let isCityBoxOpen = false
+
+const cityBox = `
+  <div id='seachCity__box'>
+    <span>Localisaton récentes</span>
+    <p><i class="fa-solid fa-location-dot"></i> Toute la France</p>
+    <p><i class="fa-solid fa-location-crosshairs"></i> Autour de moi</p>
+    <p><img src='./assets/images/other/france.png' alt='icon france' /> Toute la France</p>
+    <div class='seachCity__box__btns'><span>Effacer</span><button class="btn seachCity__box--btn">Valider les localisations</button></div>
+  </div>
+`
+//insert below cityInput
+cityInput.addEventListener('click', () => {
+  handleCityBox(cityInput, cityBox)
+  const cityInputBox = document.getElementById('seachCity__box')
+})
+// the insert function
+function handleCityBox(nodeRef, insertElement) {
+  // prevent multiple openings
+  if (isCityBoxOpen) return
+  nodeRef.insertAdjacentHTML('afterEnd', insertElement)
+  isCityBoxOpen = true
+}
+// ------ select city for research end------
+
+// ------ window event to close boxes ------
+// closebox
+function closeBox(box, boolean) {
+  box.remove()
+  boolean = false
+}
+
+window.addEventListener('mouseup', (e) => {
+  // ----for the category listbox-----
+  const listBox = document.getElementById('category__box')
+  const boxRelatedArr = ['category__box__list', 'category--button', 'category__box', 'category__box__list__element']
+
+  if (listBoxIsOpen) {
+    let match = 0
+    for (let i = 0; i < boxRelatedArr.length; i++) {
+      if (e.target.parentNode.classList.value.includes(boxRelatedArr[i])) {
+        match++
+      }
+    }
+    if (match === 0) return closeBox(listBox, listBoxIsOpen)
+  }
+
+  // ----for the cityInput box-----
+})
+// ------ window event to close boxes end ------
