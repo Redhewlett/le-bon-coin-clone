@@ -63,6 +63,10 @@ nav,
 .seachCity__box__btns {
   display: grid;
 }
+/* hidden class */
+.hidden {
+  display: none;
+}
 /* header box */
 .mainHeader {
   width: 55%;
@@ -100,6 +104,8 @@ nav {
 .priceButton:hover,
 .category--dotted:hover,
 .community:hover,
+.searchBox form input,
+.searchBox form label,
 .categoriesList ul li:hover,
 .usefullLinks ul li:not(:first-of-type, .appDownload):hover,
 .appDownload img:hover,
@@ -294,8 +300,20 @@ nav {
   padding: 3px;
 }
 .form__item input[type='radio']:checked {
+  animation-name: grow;
+  animation-timing-function: ease-in-out;
+  animation-duration: 200ms;
+  /* transition: all ease-in-out 500ms; */
   background-color: var(--orange);
   border: 2px solid var(--orange);
+}
+@keyframes grow {
+  from {
+    padding: 8px;
+  }
+  to {
+    padding: 3px;
+  }
 }
 /* search section */
 .search_tool {
@@ -914,24 +932,22 @@ footer {
   border-radius: 5px;
   padding-block: 1.2em;
   background-color: var(--white);
-  box-shadow: 0px 0px 7px 2px rgb(0 0 0 / 4%);
+  box-shadow: 0px 0px 7px 2px rgb(0 0 0 / 10%);
   position: absolute;
   top: 85%;
   right: 2%;
-  z-index: 5;
+  z-index: 4;
 }
-
 #seachCity__box p,
-#seachCity__box span:first-of-type {
+#seachCity__box span {
   font-size: 0.9em;
   font-weight: 600;
+}
+#seachCity__box p,
+#seachCity__box > span:first-of-type {
   position: relative;
   padding-inline: 1.4em;
   padding-block: 1em;
-}
-#seachCity__box span:first-of-type {
-  padding-block: 0em;
-  padding-bottom: 0.4em;
 }
 
 #seachCity__box p:last-of-type img {
@@ -956,6 +972,9 @@ footer {
   padding-top: 1em;
   justify-content: center;
   align-items: center;
+}
+.seachCity__box__btns span {
+  color: var(--regular-grey);
 }
 .seachCity__box--btn {
   color: var(--orange);
