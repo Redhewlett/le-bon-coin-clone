@@ -227,16 +227,19 @@ const cityBox = `
     <p><i class="fa-solid fa-location-dot"></i> Toute la France</p>
     <p><i class="fa-solid fa-location-crosshairs"></i> Autour de moi</p>
     <p><img src='./assets/images/other/france.png' alt='icon france' /> Toute la France</p>
-    <div class='seachCity__box__btns'><span>Effacer</span><button class="btn seachCity__box--btn">Valider les localisations</button></div>
+    <div class='menueBoxBottom__btns'>
+      <span>Effacer</span>
+      <button class="btn menueBoxBottom--btn">Valider les localisations</button>
+    </div>
   </div>
 `
 //insert below cityInput
 cityInput.addEventListener('click', () => {
   const inputBox = document.getElementById('seachCity__box')
-  handleCityBox(cityInput, cityBox, inputBox)
+  handleCityBox(cityInput, cityBox)
 })
 // the insert function
-function handleCityBox(nodeRef, insertElement, insertedElement) {
+function handleCityBox(nodeRef, insertElement) {
   // prevent multiple openings
   if (!cityBoxIsOpen) {
     nodeRef.insertAdjacentHTML('afterEnd', insertElement)
@@ -245,6 +248,129 @@ function handleCityBox(nodeRef, insertElement, insertedElement) {
   return
 }
 // ------ select city for research end------
+// ------ price button ------
+const priceButton = document.querySelector('.priceButton')
+let priceBoxIsOpen = false
+const priceBox = `
+  <div id='priceButton__box' class='priceButton__box'>
+    <span class='priceButton__box--title'>Prix</span>
+    <div class='priceButton__box__inputGroup' > 
+        <div class='priceButton__box__input'>
+          <label for'minimum' >Minimum
+            <div class='priceButton__box__input--container'>
+              <input class='price__input' type='number' name='minimum'/>
+              <p>€</p>
+            </div>
+          </label>
+        </div>
+        <div class='priceButton__box__input'>
+          <label for'maximum' >Maximum
+            <div class='priceButton__box__input--container'>
+              <input class='price__input'  type='number' name='maximum' />
+              <p>€</p>
+            </div>
+          </label>
+        </div>
+    </div>
+
+    <div class='priceButton__box__toggle'>
+      <div id='price__slidingButton' class="slidingButton">
+        <div class="slidingButton__btn">
+          <span id="slidingButton__circle2">
+            <i class="fa-solid fa-x"></i>
+          </span>
+        </div>
+      </div>
+      <p>Dons uniquements</p>
+    </div>
+
+    <div class='menueBoxBottom__btns'>
+      <span id='priceButton__box__erase' >Effacer</span>
+      <button class="btn menueBoxBottom--btn">Valider</button>
+    </div>
+  </div>
+`
+priceButton.addEventListener('click', () => {
+  const box = document.getElementById('priceButton__box')
+  handlePriceBox(priceButton, priceBox, box)
+})
+// the insert function
+function handlePriceBox(nodeRef, insertElement) {
+  // prevent multiple openings
+  if (!priceBoxIsOpen) {
+    nodeRef.insertAdjacentHTML('beforeEnd', insertElement)
+    priceBoxIsOpen = true
+    // ---------- second toggle ----------
+    const btn2 = document.getElementById('price__slidingButton')
+    const toggle2 = document.getElementById('slidingButton__circle2')
+    // inputs
+    const inputFields = [...document.querySelectorAll('.price__input')]
+    // event for pill button ready
+    btn2.addEventListener('click', () => {
+      const priceText = document.querySelector('.priceButtonTxt')
+      toggleButton(toggle2)
+      disableInput(inputFields)
+      changeText(priceText)
+    })
+    // price Inputs changes
+    // handlePriceInputs(inputFields)
+    // event for erase button ready
+    const eraseBtn = document.getElementById('priceButton__box__erase')
+    eraseBtn.addEventListener('click', (e) => {
+      erasePriceChoice()
+    })
+  }
+  return
+}
+// disable / enable the inputs
+function disableInput(inputs) {
+  if (!Array.isArray(inputs)) return
+  for (let i = 0; i < inputs.length; i++) {
+    if (!inputs[i].disabled) {
+      inputs[i].disabled = true
+    } else {
+      inputs[i].disabled = false
+    }
+  }
+}
+// get inputs values and apply input changes
+// function handlePriceInputs(inputs) {
+//   if (!Array.isArray(inputs)) return
+//   const priceText = document.querySelector('.priceButtonTxt')
+
+//   let min = 0
+//   let max = 0
+//   // change value with delay
+//   for (let i = 0; i < inputs.length; i++) {
+//     inputs[i].addEventListener('keyup', (e) => {
+//       const fieldName = e.target
+//       if (fieldName.name === 'minimum') {
+//         min = fieldName.value
+//       } else if (fieldName.name === 'maximum') {
+//         max = fieldName.value
+//       }
+//       setTimeout(function () {
+//         // change html after delay here
+//       }, 600)
+//     })
+//   }
+// }
+
+// change pricebutton text
+function changeText(target) {
+  const oldValue = target.innerHTML
+  if (oldValue === 'Prix') {
+    target.innerHTML = 'Dons uniquements'
+  } else {
+    target.innerHTML = 'Prix'
+  }
+}
+// cancel price choice
+function erasePriceChoice() {
+  // todo
+  // clear the input fields
+  // exit the box
+}
 
 // ------ window event to close boxes ------
 // closebox
@@ -270,9 +396,9 @@ window.addEventListener('mouseup', (e) => {
       return
     }
   }
-  // ----for the category listbox-----
+  // ----for the city-input box-----
   const searchCityBox = document.getElementById('seachCity__box')
-  const cityBoxRelatedArr = ['searchCity--input', 'seachCity__box', 'seachCity__box__btns']
+  const cityBoxRelatedArr = ['searchCity--input', 'seachCity__box', 'menueBoxBottom__btns']
 
   if (cityBoxIsOpen) {
     let match = 0

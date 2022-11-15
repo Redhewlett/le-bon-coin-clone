@@ -9,23 +9,26 @@ window.onscroll = function () {
 }
 // ---------- header Scroll ----------
 
-// ---------- toogle button ----------
-const text = document.querySelector('.withShipping__text')
-const btn = document.querySelector('.withShipping__btnContainer')
-const toggle = document.getElementById('withShipping__btn')
+// ---------- toggle button ----------
+const text = document.querySelector('.slidingButton__text')
+const btn = document.querySelector('.slidingButton__btn')
+const toggle = document.getElementById('slidingButton__circle')
 const shippingArray = [text, btn]
 for (let i = 0; i < shippingArray.length; i++) {
   shippingArray[i].addEventListener('click', () => {
-    if (toggle.className != 'withShipping__btn--active') {
-      toggle.classList.add('withShipping__btn--active')
-      toggle.innerHTML = '<i class="fa-solid fa-check"></i>'
-    } else {
-      toggle.classList.remove('withShipping__btn--active')
-      toggle.innerHTML = '<i class="fa-solid fa-x"></i>'
-    }
+    toggleButton(toggle)
   })
 }
-// ---------- toogle button ----------
+// toggle function
+function toggleButton(button) {
+  if (button.className != 'slidingButton__btn--active') {
+    button.classList.add('slidingButton__btn--active')
+    button.innerHTML = '<i class="fa-solid fa-check"></i>'
+  } else {
+    button.classList.remove('slidingButton__btn--active')
+    button.innerHTML = '<i class="fa-solid fa-x"></i>'
+  }
+}
 
 // ---------- caroussel ---------------
 
@@ -85,7 +88,7 @@ countryList.addEventListener('mouseleave', () => {
 const offer = document.getElementById('offres')
 const demandes = document.getElementById('demandes')
 const withPrice = document.querySelector('.priceButton')
-const withShipping = document.querySelector('.withShipping')
+const withShipping = document.querySelector('.slidingButton')
 
 const arr = [offer, demandes]
 
