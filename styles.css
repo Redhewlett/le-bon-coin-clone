@@ -9,9 +9,6 @@
   font-family: 'Open Sans', sans-serif, Arial;
 }
 
-body {
-  background-color: pink;
-}
 /* color vars */
 :root {
   --orange: #ff6e14;
@@ -41,7 +38,7 @@ nav,
 .form__item,
 .search_tool,
 .category--button,
-.withShipping,
+.slidingButton,
 .topCategories__caroussel a,
 .topCategories__carousselBtnsContainer,
 .franceRegionSelector,
@@ -60,7 +57,10 @@ nav,
 .category__box,
 .category__box__list__element,
 #seachCity__box,
-.seachCity__box__btns {
+#priceButton__box,
+.menueBoxBottom__btns,
+.priceButton__box__inputGroup,
+.priceButton__box__input {
   display: grid;
 }
 /* hidden class */
@@ -114,8 +114,8 @@ nav {
 .signature i,
 .category__box__list__element,
 #seachCity__box p:hover,
-.seachCity__box__btns span:hover,
-.seachCity__box--btn:hover {
+.menueBoxBottom__btns span:hover,
+.btn {
   cursor: pointer;
 }
 /* left side */
@@ -382,16 +382,24 @@ nav {
 }
 /* price button */
 .priceButton {
+  width: max-content;
   font-size: 1em;
   margin-inline: 1em;
   padding: 0.2em 0.9em;
   border-radius: 20px;
   border: 1px solid var(--light-grey);
+  position: relative;
+}
+.priceButton:has(input:disabled) {
+  border: 1px solid var(--orange);
+}
+.priceButton:has(input:disabled) > .priceButtonTxt {
+  color: var(--orange);
 }
 .priceButton:hover {
   background-color: var(--lighter-grey);
 }
-.withShipping {
+.slidingButton {
   z-index: 2;
   width: max-content;
   grid-template-columns: 0.1fr 1fr 0.2fr;
@@ -399,11 +407,11 @@ nav {
   align-items: center;
   margin: 1em;
 }
-.withShipping,
-.withShipping button {
+.slidingButton,
+.slidingButton button {
   cursor: pointer;
 }
-.withShipping__btnContainer {
+.slidingButton__btn {
   width: 2.8em;
   height: 1.7em;
   padding: 0.1em 0.2em;
@@ -411,10 +419,11 @@ nav {
   background-color: var(--light-grey);
   transition: all cubic-bezier(0.26, -0.5, 0.76, 1.06) 370ms;
 }
-.withShipping__btnContainer:hover {
+.slidingButton__btn:hover {
   box-shadow: 0px 0px 0px 5px var(--lighter-grey);
 }
-#withShipping__btn {
+#slidingButton__circle,
+#slidingButton__circle2 {
   width: 2.5em;
   height: 2.5em;
   text-align: center;
@@ -426,19 +435,19 @@ nav {
   position: absolute;
   transition: all cubic-bezier(0.26, -0.5, 0.76, 1.06) 370ms;
 }
-.withShipping__btn--active {
+.slidingButton__btn--active {
   transform: translateX(1.6em);
 }
-.withShipping__btn--active i {
+.slidingButton__btn--active i {
   color: var(--orange);
 }
-.withShipping__btnContainer:has(.withShipping__btn--active) {
+.slidingButton__btn:has(.slidingButton__btn--active) {
   background-color: var(--orange);
 }
-.withShipping p {
+.slidingButton p {
   font-size: 0.9em;
 }
-.withShipping button {
+.slidingButton button {
   width: max-content;
   font-size: 0.7em;
   aspect-ratio: 1;
@@ -924,13 +933,14 @@ footer {
   left: -1em;
 }
 /* search city box */
-#seachCity__box {
+#seachCity__box,
+#priceButton__box {
   width: 39%;
   height: max-content;
   grid-template-columns: 1fr;
   gap: 0em;
   border-radius: 5px;
-  padding-block: 1.2em;
+  padding-block: 0.5em;
   background-color: var(--white);
   box-shadow: 0px 0px 7px 2px rgb(0 0 0 / 10%);
   position: absolute;
@@ -939,15 +949,17 @@ footer {
   z-index: 4;
 }
 #seachCity__box p,
-#seachCity__box span {
+#seachCity__box span,
+.priceButton__box--title {
   font-size: 0.9em;
   font-weight: 600;
 }
 #seachCity__box p,
-#seachCity__box > span:first-of-type {
+#seachCity__box > span:first-of-type,
+.priceButton__box--title {
   position: relative;
   padding-inline: 1.4em;
-  padding-block: 1em;
+  padding-block: 0.8em;
 }
 
 #seachCity__box p:last-of-type img {
@@ -966,21 +978,85 @@ footer {
 #seachCity__box p:last-of-type img {
   margin-right: 0.4em;
 }
-.seachCity__box__btns {
+.menueBoxBottom__btns {
   grid-template-columns: repeat(2, 1fr);
-  padding-inline: 1.4em;
-  padding-top: 1em;
+  padding: 0em 0em 0em 1.4em;
   justify-content: center;
   align-items: center;
 }
-.seachCity__box__btns span {
+.menueBoxBottom__btns span {
   color: var(--regular-grey);
 }
-.seachCity__box--btn {
+.menueBoxBottom--btn {
   color: var(--orange);
   font-weight: 600;
   background-color: transparent;
+  justify-self: end;
+  font-size: 0.9em;
 }
-.seachCity__box--btn:hover {
+.menueBoxBottom--btn:hover {
   color: var(--orange-hover);
+}
+#priceButton__box {
+  width: 25vw;
+  top: 135%;
+  left: 2%;
+}
+.priceButton__box--title {
+  font-size: 1.2em;
+}
+.priceButton__box__inputGroup {
+  padding-inline: 1.4em;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.4em;
+}
+.priceButton__box__input {
+  font-size: 0.9em;
+  font-weight: 600;
+  gap: 0.2em;
+}
+.priceButton__box__input--container {
+  height: 2vw;
+  position: relative;
+}
+.priceButton__box__input input {
+  width: 100%;
+  height: 100%;
+  padding-inline: 0.5em;
+  border-radius: 5px;
+  border: 1px solid var(--light-grey);
+}
+.priceButton__box__input input::-webkit-outer-spin-button,
+.priceButton__box__input input::-webkit-inner-spin-button {
+  display: none;
+  --webkit-appearance: none;
+}
+.priceButton__box__input p {
+  font-size: 0.9em;
+  top: 20%;
+  right: 4%;
+  position: absolute;
+}
+.priceButton__box__input--container input:disabled:hover {
+  cursor: not-allowed;
+}
+.priceButton__box__input--container input:disabled + p,
+.priceButton__box__input label:has(input:disabled) {
+  color: var(--light-grey);
+}
+#priceButton__box > .menueBoxBottom__btns {
+  border-top: 1px solid var(--light-grey);
+}
+.priceButton__box__toggle {
+  margin: 1.4em;
+  position: relative;
+}
+.priceButton__box__toggle .slidingButton {
+  margin: 0;
+}
+.priceButton__box__toggle p {
+  position: absolute;
+  top: 9%;
+  left: 11%;
+  font-weight: 500;
 }
