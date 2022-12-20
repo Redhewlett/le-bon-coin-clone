@@ -9,9 +9,6 @@
   font-family: 'Open Sans', sans-serif, Arial;
 }
 
-body {
-  background-color: pink;
-}
 /* color vars */
 :root {
   --orange: #ff6e14;
